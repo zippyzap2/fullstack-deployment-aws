@@ -1,5 +1,5 @@
 # Introduction
-This is a dynamic web application that fetches weather data for a specified city using the OpenWeatherMap API. Built with React for the frontend and Python Flask for the backend.
+This is a dynamic web application that fetches weather data for a specified city using the OpenWeatherMap API. Built with React for the frontend and Python Flask for the backend. Below are the deployment steps for Ubuntu systems:
 ## Prerequisites
 1. **AWS Account:** An active AWS account to deploy the app.
 2. **GitHub Repository:** Your project hosted on GitHub.
