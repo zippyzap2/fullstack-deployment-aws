@@ -191,35 +191,49 @@ https://github.com/user-attachments/assets/82b7ce3a-2af5-478b-bb61-7e768e5562a4
        ```
 **10. Monitor logs for debugging:**
 ```
-#check pm2 logs
+# check pm2 logs
 pm2 logs
 
-#to identify the process occupying port 80
+# to identify the process occupying port 80
 sudo lsof -i :80
 
-#Ensure the Firewall is Open
+# Ensure the Firewall is Open
 sudo ufw status
 sudo iptables -L
 
-#Allow the required ports if necessary
+# Allow the required ports if necessary
 sudo ufw allow 80
 sudo ufw allow 5000
 sudo ufw reload
 
-#Verify Your App is Listening on the Right Ports
+# Verify Your App is Listening on the Right Ports
 sudo netstat -tuln
 sudo netstat -tuln | grep 80
 sudo netstat -tuln | grep 5000
 
-#Nginx logs to understand the error
+# Nginx logs to understand the error
 sudo tail -f /var/log/nginx/error.log
 
-#Test Nginx Configuration
+# Test Nginx Configuration
 sudo nginx -t
 
-#Ensure npm and node are installed correctly and functioning
+# Ensure npm and node are installed correctly and functioning
 node -v
 npm -v
+
+# EC2 instance connection issue
+chmod 400 <key.pem>
+
+# Check system resources (CPU, memory, storage):
+free -h
+df -h
+top
+
+# Verify Flask is running
+ps aux | grep app.py
+
+# Check Flask logs
+tail -f backend.log
 
 ```
 
