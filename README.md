@@ -132,12 +132,12 @@ pm2 startup
 ```
 <img width="500" alt="Screenshot 2024-12-11 at 2 58 33 PM" src="https://github.com/user-attachments/assets/108739dc-f3ad-4a97-a8a5-26de945c9a14" />
 
-**8. Optional - Use a Reverse Proxy (e.g., Nginx)**
+**8. Optional - Use a Reverse Proxy (e.g., Nginx)- automatically reboot ec2**
   1. Install Nginx:
 ```
 sudo apt install nginx -y
 ```
-  2. Configure Nginx to proxy traffic to your React app:
+  2. Configure Nginx to proxy traffic to your app:
   - Open Nginx configuration file
     ```
     sudo nano /etc/nginx/sites-available/default
