@@ -145,20 +145,34 @@ sudo apt install nginx -y
   - Replace the content
     ```
     server {
-    listen 80;
+       listen 80;
 
-    location / {
-        root /home/ubuntu/weather-app/frontend/build;
-        index index.html;
-        try_files $uri /index.html;
-      }
+       root /home/ubuntu/weather-app/frontend/build;
+       index index.html;
+
+       location / {
+           try_files $uri /index.html;
+       }
     }
+
     ```
   - Test and reload Nginx:
     ```
     sudo nginx -t
     sudo systemctl restart nginx
     ```
+   - If issue loding application ensure correct permissions
+     ```
+     sudo chmod 755 /home/ubuntu/weather-app/frontend
+     sudo chmod 755 /home/ubuntu/weather-app
+     sudo chmod 755 /home/ubuntu
+     sudo systemctl restart nginx
+
+     ```
+   - Enable Nginx to Start on Boot
+     ```
+     sudo systemctl enable nginx
+     ```
 **9. Test and Secure the Deployment**
   1. Test your app:
      - Access your app in the browser via http://<EC2_PUBLIC_IP>
@@ -177,7 +191,36 @@ https://github.com/user-attachments/assets/82b7ce3a-2af5-478b-bb61-7e768e5562a4
        ```
 **10. Monitor logs for debugging:**
 ```
+#check pm2 logs
 pm2 logs
+
+#to identify the process occupying port 80
+sudo lsof -i :80
+
+#Ensure the Firewall is Open
+sudo ufw status
+sudo iptables -L
+
+#Allow the required ports if necessary
+sudo ufw allow 80
+sudo ufw allow 5000
+sudo ufw reload
+
+#Verify Your App is Listening on the Right Ports
+sudo netstat -tuln
+sudo netstat -tuln | grep 80
+sudo netstat -tuln | grep 5000
+
+#Nginx logs to understand the error
+sudo tail -f /var/log/nginx/error.log
+
+#Test Nginx Configuration
+sudo nginx -t
+
+#Ensure npm and node are installed correctly and functioning
+node -v
+npm -v
+
 ```
 
 
