@@ -189,7 +189,7 @@ https://github.com/user-attachments/assets/82b7ce3a-2af5-478b-bb61-7e768e5562a4
        sudo ufw allow 5000
        sudo ufw allow 80
        ```
-**10. Monitor logs for debugging:**
+**10. Troubleshooting & Monitor logs**
 ```
 # check pm2 logs
 pm2 logs
